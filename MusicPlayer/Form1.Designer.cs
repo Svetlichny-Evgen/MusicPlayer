@@ -29,34 +29,50 @@
         private void InitializeComponent()
         {
             musicArea = new TableLayoutPanel();
+            PlayListArea = new FlowLayoutPanel();
+            musicArea.SuspendLayout();
             SuspendLayout();
             // 
             // musicArea
             // 
             musicArea.ColumnCount = 2;
-            musicArea.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.5F));
-            musicArea.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.5F));
+            musicArea.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            musicArea.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
+            musicArea.Controls.Add(PlayListArea, 0, 0);
             musicArea.Dock = DockStyle.Fill;
             musicArea.Location = new Point(0, 0);
+            musicArea.Margin = new Padding(3, 4, 3, 4);
             musicArea.Name = "musicArea";
             musicArea.RowCount = 1;
-            musicArea.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            musicArea.Size = new Size(800, 450);
+            musicArea.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            musicArea.Size = new Size(914, 600);
             musicArea.TabIndex = 0;
+            // 
+            // PlayListArea
+            // 
+            PlayListArea.Dock = DockStyle.Fill;
+            PlayListArea.Location = new Point(3, 3);
+            PlayListArea.Name = "PlayListArea";
+            PlayListArea.Size = new Size(222, 594);
+            PlayListArea.TabIndex = 0;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(musicArea);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "AudioPlayer";
+            Load += Form1_Load;
+            musicArea.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private TableLayoutPanel musicArea;
+        private FlowLayoutPanel PlayListArea;
     }
 }
