@@ -15,7 +15,9 @@ namespace MusicPlayer.Components
         public PlayList()
         {
             InitializeComponent();
+            HoverRecursive(PanelHaupt);
         }
+        #region        
         public Image Image
         {
             get
@@ -52,7 +54,31 @@ namespace MusicPlayer.Components
             }
 
         }
+        #endregion
 
 
+
+
+
+        private void PanelHaupt_MouseEnter(object sender, EventArgs e)
+        {
+            PanelHaupt.BackColor = Color.FromArgb(217, 217, 217);
+        }
+
+        private void PanelHaupt_MouseLeave(object sender, EventArgs e)
+        {
+            PanelHaupt.BackColor = Color.White;
+        }
+        private void HoverRecursive(Control panel)
+        {
+            panel.MouseEnter += PanelHaupt_MouseEnter;
+            panel.MouseLeave += PanelHaupt_MouseLeave;
+            for(int i = 0; i < panel.Controls.Count; i++) 
+            {
+                var child = panel.Controls[i];  
+                HoverRecursive(child);
+            }
+            
+        }
     }
 }
