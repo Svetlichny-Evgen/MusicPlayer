@@ -8,6 +8,7 @@ namespace MusicPlayer
 {
     public partial class Form1 : Form
     {
+        string folderPath = Path.Combine("D:", "Music");
         public Form1()
         {
             InitializeComponent();
@@ -16,7 +17,11 @@ namespace MusicPlayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            string[] dirs = Directory.GetDirectories(folderPath);
+            foreach (string dir in dirs)
+            {
+                MessageBox.Show(dir);
+            }
             //for (int i = 4; i < 14; i++)
             //{
             //    PlayList list = new PlayList();
@@ -38,8 +43,6 @@ namespace MusicPlayer
 
         private void SerchMusic() 
         {
-            string folderPath = Path.Combine("D:", "Music");
-
             if (Directory.Exists(folderPath))
             {
                 //Здесь будет выгрузка плейлистов если папка существует
@@ -56,7 +59,7 @@ namespace MusicPlayer
             folderBrowserDialog.Description = "Выберите папку";
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                string selectedFolderPath = folderBrowserDialog.SelectedPath;
+                folderPath = folderBrowserDialog.SelectedPath;
             }
             else 
             {
