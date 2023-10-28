@@ -12,11 +12,14 @@ namespace MusicPlayer
         public Form1()
         {
             InitializeComponent();
-            SerchMusic();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (!Directory.Exists(folderPath))
+            {
+                OpenFileOnFormLoad();
+            }
             string[] dirs = Directory.GetDirectories(folderPath);
             foreach (string dir in dirs)
             {
@@ -39,18 +42,6 @@ namespace MusicPlayer
             //    card.Singer = "Singer " + i;
             //    musicCardsArea.Controls.Add(card);
             //}
-        }
-
-        private void SerchMusic() 
-        {
-            if (Directory.Exists(folderPath))
-            {
-                //Здесь будет выгрузка плейлистов если папка существует
-            }
-            else
-            {
-                OpenFileOnFormLoad();
-            }
         }
         private void OpenFileOnFormLoad()
         {
