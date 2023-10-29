@@ -32,8 +32,6 @@
             PlayListArea = new FlowLayoutPanel();
             musicCardsArea = new FlowLayoutPanel();
             musicArea.SuspendLayout();
-            PlayListArea.SuspendLayout();
-            musicCardsArea.SuspendLayout();
             SuspendLayout();
             // 
             // musicArea
@@ -45,41 +43,42 @@
             musicArea.Controls.Add(musicCardsArea, 1, 0);
             musicArea.Dock = DockStyle.Fill;
             musicArea.Location = new Point(0, 0);
+            musicArea.Margin = new Padding(3, 4, 3, 4);
             musicArea.Name = "musicArea";
             musicArea.RowCount = 1;
             musicArea.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            musicArea.Size = new Size(800, 450);
+            musicArea.Size = new Size(914, 600);
             musicArea.TabIndex = 0;
             // 
             // PlayListArea
             // 
             PlayListArea.Dock = DockStyle.Fill;
-            PlayListArea.Location = new Point(3, 2);
-            PlayListArea.Margin = new Padding(3, 2, 3, 2);
+            PlayListArea.Location = new Point(3, 3);
             PlayListArea.Name = "PlayListArea";
-            PlayListArea.Size = new Size(194, 446);
+            PlayListArea.Size = new Size(222, 594);
             PlayListArea.TabIndex = 0;
             // 
             // musicCardsArea
             // 
+            musicCardsArea.AutoScroll = true;
             musicCardsArea.Dock = DockStyle.Fill;
-            musicCardsArea.Location = new Point(203, 3);
+            musicCardsArea.Location = new Point(231, 4);
+            musicCardsArea.Margin = new Padding(3, 4, 3, 4);
             musicCardsArea.Name = "musicCardsArea";
-            musicCardsArea.Size = new Size(594, 444);
+            musicCardsArea.Size = new Size(680, 592);
             musicCardsArea.TabIndex = 1;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(musicArea);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "AudioPlayer";
             Load += Form1_Load;
             musicArea.ResumeLayout(false);
-            PlayListArea.ResumeLayout(false);
-            musicCardsArea.ResumeLayout(false);
             ResumeLayout(false);
         }
 

@@ -12,12 +12,33 @@ namespace MusicPlayer.Components
 {
     public partial class PlayList : UserControl
     {
-        public PlayList()
+        private EventHandler? openPlayList;
+        private PlayList()
         {
             InitializeComponent();
+            //HoverRecursive(PanelHaupt);
+        }
+        public PlayList(string path) : this()
+        {
+            Source = path;
+            var dirInfo = new DirectoryInfo(Source);
+            Title = dirInfo.Name;
+            Description = dirInfo.CreationTime.ToString();
+            string pathImage = Path.Combine(Source, Title + ".jpg");
+            if (File.Exists(pathImage))
+            {
+                Image = new Bitmap(pathImage);
+            }
+            else
+            {
+                Image = Properties.Resources.audio1;
+            }
+            ClickRecursive(PanelHaupt);
             HoverRecursive(PanelHaupt);
         }
-        #region        
+        #region  Properties
+
+
         public Image Image
         {
             get
@@ -54,12 +75,13 @@ namespace MusicPlayer.Components
             }
 
         }
+        public string Source { get; set; }
         #endregion
 
 
 
 
-
+        #region Наведение
         private void PanelHaupt_MouseEnter(object sender, EventArgs e)
         {
             PanelHaupt.BackColor = Color.FromArgb(217, 217, 217);
@@ -73,12 +95,42 @@ namespace MusicPlayer.Components
         {
             panel.MouseEnter += PanelHaupt_MouseEnter;
             panel.MouseLeave += PanelHaupt_MouseLeave;
-            for(int i = 0; i < panel.Controls.Count; i++) 
+            for (int i = 0; i < panel.Controls.Count; i++)
             {
-                var child = panel.Controls[i];  
+                var child = panel.Controls[i];
                 HoverRecursive(child);
             }
-            
+
         }
+        #endregion
+
+        #region Нажим
+        
+
+        
+        private void ClickRecursive(Control panel)
+        {
+            panel.MouseClick += Panel_MouseClick;
+
+
+            for (int i = 0; i < panel.Controls.Count; i++)
+            {
+                var child = panel.Controls[i];
+                ClickRecursive(child);
+            }
+
+        }
+
+        private void Panel_MouseClick(object? sender, MouseEventArgs e)
+        {
+            openPlayList?.Invoke(this, e);
+        }
+        
+        public event EventHandler OpenPlayList
+        {
+            add { openPlayList += value; }
+            remove { openPlayList -= value; }
+        }
+        #endregion
     }
 }

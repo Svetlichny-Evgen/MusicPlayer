@@ -87,8 +87,8 @@
             // 
             TextPlaylistName.AutoSize = true;
             TextPlaylistName.Dock = DockStyle.Fill;
-            TextPlaylistName.Font = new Font("Candara", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            TextPlaylistName.ForeColor = Color.Black;
+            TextPlaylistName.Font = new Font("Bahnschrift SemiLight", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            TextPlaylistName.ForeColor = Color.FromArgb(150, 60, 96);
             TextPlaylistName.Location = new Point(3, 0);
             TextPlaylistName.Name = "TextPlaylistName";
             TextPlaylistName.Size = new Size(199, 38);

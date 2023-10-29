@@ -23,7 +23,11 @@ namespace MusicPlayer
             string[] dirs = Directory.GetDirectories(folderPath);
             foreach (string dir in dirs)
             {
-                MessageBox.Show(dir);
+                var playlist = new PlayList(dir);
+                playlist.OpenPlayList += Playlist_OpenPlayList;
+                PlayListArea.Controls.Add(playlist);
+                //string[] tracks = Directory.GetDirectories(dir, "*.mp3");
+                // MessageBox.Show(dir);
             }
             //for (int i = 4; i < 14; i++)
             //{
@@ -43,6 +47,26 @@ namespace MusicPlayer
             //    musicCardsArea.Controls.Add(card);
             //}
         }
+
+        private void Playlist_OpenPlayList(object? sender, EventArgs e)
+        {
+            PlayList playlist = sender as PlayList;
+            if (playlist != null)
+            {
+                OpenPlayList(playlist);
+            }
+        }
+
+        private void OpenPlayList(PlayList playlist)
+        {
+            musicCardsArea.Controls.Clear();
+            string[] tracks = Directory.GetFiles(playlist.Source, "*.mp3");
+            foreach (var track in tracks)
+            {
+                var card = new MusicCard();
+                musicCardsArea.Controls.Add(card);
+            }
+        }
         private void OpenFileOnFormLoad()
         {
             MessageBox.Show("Похоже, мы не смогли найти вашу папку с музыкой😞.\nВыберите дерикторию где находится ваша музыка.");
@@ -52,7 +76,7 @@ namespace MusicPlayer
             {
                 folderPath = folderBrowserDialog.SelectedPath;
             }
-            else 
+            else
             {
                 this.Close();
             }
