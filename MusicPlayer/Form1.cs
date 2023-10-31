@@ -1,4 +1,5 @@
 ﻿using MusicPlayer.Components;
+using NAudio.Wave;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
@@ -26,31 +27,12 @@ namespace MusicPlayer
                 var playlist = new PlayList(dir);
                 playlist.OpenPlayList += Playlist_OpenPlayList;
                 PlayListArea.Controls.Add(playlist);
-                //string[] tracks = Directory.GetDirectories(dir, "*.mp3");
-                // MessageBox.Show(dir);
             }
-            //for (int i = 4; i < 14; i++)
-            //{
-            //    PlayList list = new PlayList();
-            //    list.Image = Properties.Resources.imageplaylist;
-            //    list.Title = "Car MIX";
-            //    list.Description = i + " Track";
-            //    PlayListArea.Controls.Add(list);
-
-            //}
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    MusicCard card = new MusicCard();
-            //    card.Image = Properties.Resources.imageplaylist;
-            //    card.Title = "Song #" + i;
-            //    card.Singer = "Singer " + i;
-            //    musicCardsArea.Controls.Add(card);
-            //}
         }
 
         private void Playlist_OpenPlayList(object? sender, EventArgs e)
         {
-            PlayList playlist = sender as PlayList;
+            PlayList? playlist = sender as PlayList;
             if (playlist != null)
             {
                 OpenPlayList(playlist);
@@ -64,9 +46,27 @@ namespace MusicPlayer
             foreach (var track in tracks)
             {
                 var card = new MusicCard(track);
+                card.PlayTrack += Card_PlayTrack;
                 musicCardsArea.Controls.Add(card);
             }
         }
+
+        WaveOut wave;
+        AudioFileReader audio;
+        private void Card_PlayTrack(object? sender, EventArgs e)
+        {
+            MusicCard? playlist = sender as MusicCard;
+            if (playlist != null)
+            {
+                wave = new WaveOut();
+                audio = new AudioFileReader(playlist.Source);
+
+                audio.Volume = 0.5f;
+                wave.Init(audio);
+                wave.Play();
+            }
+        }
+
         private void OpenFileOnFormLoad()
         {
             MessageBox.Show("Похоже, мы не смогли найти вашу папку с музыкой😞.\nВыберите дерикторию где находится ваша музыка.");

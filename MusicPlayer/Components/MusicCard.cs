@@ -12,14 +12,17 @@ namespace MusicPlayer.Components
 {
     public partial class MusicCard : UserControl
     {
+        private EventHandler? playTrack;
         private MusicCard()
         {
             InitializeComponent();
             HoverRecursive(musicCardArea);
+            ClickRecursive(musicCardArea);
         }
 
         public MusicCard(string file) : this() 
-        { 
+        {
+            Source = file;
             var fileInfo = new FileInfo(file);
             Title = fileInfo.Name;
             DirectoryInfo directoryInfo = fileInfo.Directory;
@@ -76,7 +79,7 @@ namespace MusicPlayer.Components
 
         public string Source { get; set; }
         #endregion
-
+        #region Hover
         private void MusicCard_Enter(object? sender, EventArgs e)
         {
             musicCardArea.BackColor = Color.FromArgb(217, 217, 217);
@@ -97,5 +100,31 @@ namespace MusicPlayer.Components
                 HoverRecursive(child);
             }
         }
+        #endregion
+        #region Click
+        private void ClickRecursive(Control panel)
+        {
+            panel.MouseClick += Panel_MouseClick;
+
+
+            for (int i = 0; i < panel.Controls.Count; i++)
+            {
+                var child = panel.Controls[i];
+                ClickRecursive(child);
+            }
+
+        }
+
+        private void Panel_MouseClick(object? sender, MouseEventArgs e)
+        {
+            playTrack?.Invoke(this, e);
+        }
+
+        public event EventHandler PlayTrack
+        {
+            add { playTrack += value; }
+            remove { playTrack -= value; }
+        }
+        #endregion
     }
 }
