@@ -63,7 +63,7 @@ namespace MusicPlayer
             string[] tracks = Directory.GetFiles(playlist.Source, "*.mp3");
             foreach (var track in tracks)
             {
-                var card = new MusicCard();
+                var card = new MusicCard(track);
                 musicCardsArea.Controls.Add(card);
             }
         }

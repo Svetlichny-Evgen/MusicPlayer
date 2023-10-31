@@ -12,10 +12,31 @@ namespace MusicPlayer.Components
 {
     public partial class MusicCard : UserControl
     {
-        public MusicCard()
+        private MusicCard()
         {
             InitializeComponent();
             HoverRecursive(musicCardArea);
+        }
+
+        public MusicCard(string file) : this() 
+        { 
+            var fileInfo = new FileInfo(file);
+            Title = fileInfo.Name;
+            DirectoryInfo directoryInfo = fileInfo.Directory;
+            Singer = directoryInfo.Name;
+
+            int indexLastPoint = Title.LastIndexOf(".");
+            string filePath = Title.Substring(0, indexLastPoint);
+            string pathImage = Path.Combine(fileInfo.DirectoryName!,"Images", filePath + ".jpg");
+
+            if (File.Exists(pathImage))
+            {
+                Image = new Bitmap(pathImage);
+            }
+            else 
+            {
+                Image = Properties.Resources.audio;
+            }
         }
 
         #region Properties
@@ -52,6 +73,8 @@ namespace MusicPlayer.Components
                 lbSinger.Text = value;
             }
         }
+
+        public string Source { get; set; }
         #endregion
 
         private void MusicCard_Enter(object? sender, EventArgs e)
