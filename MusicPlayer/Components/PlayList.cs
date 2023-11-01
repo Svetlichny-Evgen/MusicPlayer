@@ -23,7 +23,8 @@ namespace MusicPlayer.Components
             Source = path;
             var dirInfo = new DirectoryInfo(Source);
             Title = dirInfo.Name;
-            Description = dirInfo.CreationTime.ToString();
+            var tracks = Directory.GetFiles(path, "*.mp3");
+            Description = tracks.Length + " Tracks";
             string pathImage = Path.Combine(Source, Title + ".jpg");
             if (File.Exists(pathImage))
             {
