@@ -58,7 +58,7 @@ namespace MusicPlayer
             MusicCard? playlist = sender as MusicCard;
             if (playlist != null)
             {
-                if(wave != null)
+                if (wave != null)
                 {
                     wave.Dispose();
                     audio.Dispose();

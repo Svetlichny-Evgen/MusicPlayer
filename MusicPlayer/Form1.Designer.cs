@@ -28,64 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            musicArea = new TableLayoutPanel();
-            PlayListArea = new FlowLayoutPanel();
             musicCardsArea = new FlowLayoutPanel();
-            musicArea.SuspendLayout();
+            PlayListArea = new FlowLayoutPanel();
+            audioPlayerControl1 = new Components.AudioPlayerControl();
             SuspendLayout();
-            // 
-            // musicArea
-            // 
-            musicArea.ColumnCount = 2;
-            musicArea.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            musicArea.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
-            musicArea.Controls.Add(PlayListArea, 0, 0);
-            musicArea.Controls.Add(musicCardsArea, 1, 0);
-            musicArea.Dock = DockStyle.Fill;
-            musicArea.Location = new Point(0, 0);
-            musicArea.Margin = new Padding(3, 4, 3, 4);
-            musicArea.Name = "musicArea";
-            musicArea.RowCount = 1;
-            musicArea.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            musicArea.Size = new Size(914, 600);
-            musicArea.TabIndex = 0;
-            // 
-            // PlayListArea
-            // 
-            PlayListArea.Dock = DockStyle.Fill;
-            PlayListArea.Location = new Point(3, 3);
-            PlayListArea.Name = "PlayListArea";
-            PlayListArea.Size = new Size(222, 594);
-            PlayListArea.TabIndex = 0;
             // 
             // musicCardsArea
             // 
             musicCardsArea.AutoScroll = true;
             musicCardsArea.Dock = DockStyle.Fill;
-            musicCardsArea.Location = new Point(231, 4);
+            musicCardsArea.Location = new Point(254, 0);
             musicCardsArea.Margin = new Padding(3, 4, 3, 4);
             musicCardsArea.Name = "musicCardsArea";
-            musicCardsArea.Size = new Size(680, 592);
+            musicCardsArea.Size = new Size(983, 513);
             musicCardsArea.TabIndex = 1;
+            // 
+            // PlayListArea
+            // 
+            PlayListArea.Dock = DockStyle.Left;
+            PlayListArea.Location = new Point(0, 0);
+            PlayListArea.Name = "PlayListArea";
+            PlayListArea.Size = new Size(254, 513);
+            PlayListArea.TabIndex = 0;
+            // 
+            // audioPlayerControl1
+            // 
+            audioPlayerControl1.Dock = DockStyle.Bottom;
+            audioPlayerControl1.Location = new Point(0, 513);
+            audioPlayerControl1.Name = "audioPlayerControl1";
+            audioPlayerControl1.Size = new Size(1237, 87);
+            audioPlayerControl1.TabIndex = 2;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
-            Controls.Add(musicArea);
+            ClientSize = new Size(1237, 600);
+            Controls.Add(musicCardsArea);
+            Controls.Add(PlayListArea);
+            Controls.Add(audioPlayerControl1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "AudioPlayer";
             Load += Form1_Load;
-            musicArea.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TableLayoutPanel musicArea;
-        private FlowLayoutPanel PlayListArea;
         private FlowLayoutPanel musicCardsArea;
+        private FlowLayoutPanel PlayListArea;
+        private Components.AudioPlayerControl audioPlayerControl1;
     }
 }
