@@ -51,26 +51,15 @@ namespace MusicPlayer
             }
         }
 
-        WaveOut wave;
-        AudioFileReader audio;
+        
         private void Card_PlayTrack(object? sender, EventArgs e)
         {
-            MusicCard? playlist = sender as MusicCard;
-            if (playlist != null)
+            if (sender is MusicCard card)
             {
-                if (wave != null)
-                {
-                    wave.Dispose();
-                    audio.Dispose();
-                }
-
-                wave = new WaveOut();
-                audio = new AudioFileReader(playlist.Source);
-
-                audio.Volume = 0.5f;
-                wave.Init(audio);
-                wave.Play();
+                audioPlayerControl1.Play(card);
             }
+            
+           
         }
 
         private void OpenFileOnFormLoad()

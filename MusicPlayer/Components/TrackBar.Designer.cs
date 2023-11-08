@@ -48,28 +48,33 @@
             TrackBarArea.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TrackBarArea.Size = new Size(728, 41);
             TrackBarArea.TabIndex = 0;
+            TrackBarArea.MouseClick += FirstLine_MouseClick;
             // 
             // FirstLine
             // 
             FirstLine.AutoSize = true;
             FirstLine.BackColor = Color.Red;
+            FirstLine.Cursor = Cursors.Hand;
             FirstLine.Dock = DockStyle.Fill;
             FirstLine.Location = new Point(0, 0);
             FirstLine.Margin = new Padding(0);
             FirstLine.Name = "FirstLine";
             FirstLine.Size = new Size(364, 41);
             FirstLine.TabIndex = 0;
+            FirstLine.MouseClick += FirstLine_MouseClick;
             // 
             // LastLine
             // 
             LastLine.AutoSize = true;
             LastLine.BackColor = SystemColors.ButtonShadow;
+            LastLine.Cursor = Cursors.Hand;
             LastLine.Dock = DockStyle.Fill;
             LastLine.Location = new Point(364, 0);
             LastLine.Margin = new Padding(0);
             LastLine.Name = "LastLine";
             LastLine.Size = new Size(364, 41);
             LastLine.TabIndex = 1;
+            LastLine.MouseClick += LastLine_MouseClick;
             // 
             // TrackBar
             // 

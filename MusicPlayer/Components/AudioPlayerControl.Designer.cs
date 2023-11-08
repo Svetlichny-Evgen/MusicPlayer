@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             TLPAudioKontrol = new TableLayoutPanel();
             TLPControlMain = new TableLayoutPanel();
             TLPControlButton = new TableLayoutPanel();
             TLPControlBar = new TableLayoutPanel();
-            trackBar1 = new TrackBar();
+            trackBar = new TrackBar();
+            currentTime = new Label();
+            endTime = new Label();
+            audioTimer = new System.Windows.Forms.Timer(components);
             TLPAudioKontrol.SuspendLayout();
             TLPControlMain.SuspendLayout();
             TLPControlBar.SuspendLayout();
@@ -53,7 +57,6 @@
             TLPAudioKontrol.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TLPAudioKontrol.Size = new Size(996, 99);
             TLPAudioKontrol.TabIndex = 0;
-            TLPAudioKontrol.Paint += tableLayoutPanel1_Paint;
             // 
             // TLPControlMain
             // 
@@ -96,7 +99,9 @@
             TLPControlBar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TLPControlBar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 540F));
             TLPControlBar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TLPControlBar.Controls.Add(trackBar1, 1, 0);
+            TLPControlBar.Controls.Add(trackBar, 1, 0);
+            TLPControlBar.Controls.Add(currentTime, 0, 0);
+            TLPControlBar.Controls.Add(endTime, 2, 0);
             TLPControlBar.Dock = DockStyle.Fill;
             TLPControlBar.Location = new Point(8, 55);
             TLPControlBar.Name = "TLPControlBar";
@@ -105,13 +110,44 @@
             TLPControlBar.Size = new Size(678, 30);
             TLPControlBar.TabIndex = 1;
             // 
-            // trackBar1
+            // trackBar
             // 
-            trackBar1.Dock = DockStyle.Fill;
-            trackBar1.Location = new Point(72, 3);
-            trackBar1.Name = "trackBar1";
-            trackBar1.Size = new Size(534, 24);
-            trackBar1.TabIndex = 0;
+            trackBar.Dock = DockStyle.Fill;
+            trackBar.HeightPadding = 7;
+            trackBar.Location = new Point(72, 3);
+            trackBar.Max = 100F;
+            trackBar.Name = "trackBar";
+            trackBar.Size = new Size(534, 24);
+            trackBar.TabIndex = 0;
+            trackBar.Value = 50F;
+            // 
+            // currentTime
+            // 
+            currentTime.AutoSize = true;
+            currentTime.Dock = DockStyle.Right;
+            currentTime.Location = new Point(30, 0);
+            currentTime.Name = "currentTime";
+            currentTime.Size = new Size(36, 30);
+            currentTime.TabIndex = 1;
+            currentTime.Text = "--:--";
+            currentTime.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // endTime
+            // 
+            endTime.AutoSize = true;
+            endTime.Dock = DockStyle.Left;
+            endTime.Location = new Point(612, 0);
+            endTime.Name = "endTime";
+            endTime.Size = new Size(36, 30);
+            endTime.TabIndex = 2;
+            endTime.Text = "--:--";
+            endTime.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // audioTimer
+            // 
+            audioTimer.Enabled = true;
+            audioTimer.Interval = 1000;
+            audioTimer.Tick += audioTimer_Tick;
             // 
             // AudioPlayerControl
             // 
@@ -123,6 +159,7 @@
             TLPAudioKontrol.ResumeLayout(false);
             TLPControlMain.ResumeLayout(false);
             TLPControlBar.ResumeLayout(false);
+            TLPControlBar.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -132,6 +169,9 @@
         private TableLayoutPanel TLPControlMain;
         private TableLayoutPanel TLPControlButton;
         private TableLayoutPanel TLPControlBar;
-        private TrackBar trackBar1;
+        private TrackBar trackBar;
+        private Label currentTime;
+        private Label endTime;
+        private System.Windows.Forms.Timer audioTimer;
     }
 }
