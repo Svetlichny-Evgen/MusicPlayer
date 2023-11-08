@@ -20,6 +20,8 @@ namespace MusicPlayer.Components
         public AudioPlayerControl()
         {
             InitializeComponent();
+            trackInfo1.Title = "";
+            trackInfo1.Singer = "";
             trackBar.ChangeValue += TrackBar_ChangeValue;
             trackBar.Value = 0.0f;
         }
@@ -50,7 +52,9 @@ namespace MusicPlayer.Components
             wave.Init(audio);
             wave.Play();
 
-
+            trackInfo1.Image = card.Image;
+            trackInfo1.Title = card.Title;
+            trackInfo1.Singer = card.Singer;
         }
         private void audioTimer_Tick(object sender, EventArgs e)
         {

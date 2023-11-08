@@ -82,10 +82,12 @@
             // 
             lbMusicTitle.AutoSize = true;
             lbMusicTitle.BackColor = Color.Transparent;
+            lbMusicTitle.Font = new Font("Bahnschrift SemiLight", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbMusicTitle.ForeColor = Color.FromArgb(150, 60, 96);
             lbMusicTitle.Location = new Point(25, 156);
             lbMusicTitle.Margin = new Padding(5);
             lbMusicTitle.Name = "lbMusicTitle";
-            lbMusicTitle.Size = new Size(38, 15);
+            lbMusicTitle.Size = new Size(58, 23);
             lbMusicTitle.TabIndex = 1;
             lbMusicTitle.Text = "label1";
             // 

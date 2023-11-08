@@ -37,37 +37,37 @@
             // 
             musicCardsArea.AutoScroll = true;
             musicCardsArea.Dock = DockStyle.Fill;
-            musicCardsArea.Location = new Point(254, 0);
-            musicCardsArea.Margin = new Padding(3, 4, 3, 4);
+            musicCardsArea.Location = new Point(234, 0);
             musicCardsArea.Name = "musicCardsArea";
-            musicCardsArea.Size = new Size(983, 513);
+            musicCardsArea.Size = new Size(768, 385);
             musicCardsArea.TabIndex = 1;
             // 
             // PlayListArea
             // 
             PlayListArea.Dock = DockStyle.Left;
             PlayListArea.Location = new Point(0, 0);
+            PlayListArea.Margin = new Padding(3, 2, 3, 2);
             PlayListArea.Name = "PlayListArea";
-            PlayListArea.Size = new Size(254, 513);
+            PlayListArea.Size = new Size(234, 385);
             PlayListArea.TabIndex = 0;
             // 
             // audioPlayerControl1
             // 
             audioPlayerControl1.Dock = DockStyle.Bottom;
-            audioPlayerControl1.Location = new Point(0, 513);
+            audioPlayerControl1.Location = new Point(0, 385);
+            audioPlayerControl1.Margin = new Padding(3, 2, 3, 2);
             audioPlayerControl1.Name = "audioPlayerControl1";
-            audioPlayerControl1.Size = new Size(1237, 87);
+            audioPlayerControl1.Size = new Size(1002, 65);
             audioPlayerControl1.TabIndex = 2;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1237, 600);
+            ClientSize = new Size(1002, 450);
             Controls.Add(musicCardsArea);
             Controls.Add(PlayListArea);
             Controls.Add(audioPlayerControl1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "AudioPlayer";
             Load += Form1_Load;

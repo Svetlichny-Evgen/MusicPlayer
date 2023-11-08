@@ -51,15 +51,15 @@ namespace MusicPlayer
             }
         }
 
-        
+
         private void Card_PlayTrack(object? sender, EventArgs e)
         {
             if (sender is MusicCard card)
             {
                 audioPlayerControl1.Play(card);
             }
-            
-           
+
+
         }
 
         private void OpenFileOnFormLoad()

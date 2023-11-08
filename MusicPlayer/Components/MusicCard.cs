@@ -20,7 +20,7 @@ namespace MusicPlayer.Components
             ClickRecursive(musicCardArea);
         }
 
-        public MusicCard(string file) : this() 
+        public MusicCard(string file) : this()
         {
             Source = file;
             var fileInfo = new FileInfo(file);
@@ -30,13 +30,13 @@ namespace MusicPlayer.Components
 
             int indexLastPoint = Title.LastIndexOf(".");
             string filePath = Title.Substring(0, indexLastPoint);
-            string pathImage = Path.Combine(fileInfo.DirectoryName!,"Images", filePath + ".jpg");
+            string pathImage = Path.Combine(fileInfo.DirectoryName!, "Images", filePath + ".jpg");
 
             if (File.Exists(pathImage))
             {
                 Image = new Bitmap(pathImage);
             }
-            else 
+            else
             {
                 Image = Properties.Resources.audio;
             }
