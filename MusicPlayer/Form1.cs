@@ -1,5 +1,6 @@
 ﻿using MusicPlayer.Components;
 using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
@@ -13,6 +14,24 @@ namespace MusicPlayer
         public Form1()
         {
             InitializeComponent();
+            audioPlayerControl.Next += AudioPlayerControl_Next;
+            audioPlayerControl.Prev += AudioPlayerControl_Prev;
+        }
+
+        private void AudioPlayerControl_Prev(object? sender, MusicCard e)
+        {
+            int index = musicCardsArea.Controls.IndexOf(e);
+            index = index == 0 ? musicCardsArea.Controls.Count - 1: index - 1;
+            var prev = (MusicCard)musicCardsArea.Controls[index];
+            audioPlayerControl.PlayTrack(prev);
+        }
+
+        private void AudioPlayerControl_Next(object? sender, MusicCard e)
+        {
+            int index = musicCardsArea.Controls.IndexOf(e);
+            index = index == musicCardsArea.Controls.Count - 1 ? 0 : index + 1;
+            var next = (MusicCard)musicCardsArea.Controls[index];
+            audioPlayerControl.PlayTrack(next);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -56,7 +75,7 @@ namespace MusicPlayer
         {
             if (sender is MusicCard card)
             {
-                audioPlayerControl1.Play(card);
+                audioPlayerControl.PlayTrack(card);
             }
 
 

@@ -17,15 +17,42 @@ namespace MusicPlayer.Components
 
         WaveOut wave;
         AudioFileReader? audio;
+        MusicCard lastCard;
+
+        #region Play
+        bool play;
+
+        public bool Play
+        {
+            get
+            {
+                return play;
+            }
+            set
+            {
+                play = value;
+                if (play)
+                {
+                    wave.Play();
+                    playButton.Image = Properties.Resources.stop;
+                }
+                else
+                {
+                    wave.Pause();
+                    playButton.Image = Properties.Resources.play;
+                }
+            }
+        }
+        #endregion
         public AudioPlayerControl()
         {
             InitializeComponent();
-            trackInfo1.Title = "";
-            trackInfo1.Singer = "";
+            trackInfo.Title = "";
+            trackInfo.Singer = "";
             trackBar.ChangeValue += TrackBar_ChangeValue;
             trackBar.Value = 0.0f;
         }
-
+        #region MusicControl
         private void TrackBar_ChangeValue(object? sender, float e)
         {
             if (audio != null)
@@ -33,9 +60,9 @@ namespace MusicPlayer.Components
                 audio.CurrentTime = TimeSpan.FromSeconds(e);
             }
         }
-        public void Play(MusicCard card)
+        public void PlayTrack(MusicCard card)
         {
-
+            lastCard = card;
             if (wave != null)
             {
                 wave.Dispose();
@@ -44,18 +71,23 @@ namespace MusicPlayer.Components
 
             wave = new WaveOut();
             audio = new AudioFileReader(card.Source);
+            wave.Init(audio);
+            wave.PlaybackStopped += NextEvent;
+
+            trackInfo.Image = card.Image;
+            trackInfo.Title = card.Title;
+            trackInfo.Singer = card.Singer;
+
             trackBar.Max = (float)audio.TotalTime.TotalSeconds;
             TimeSpan end = audio.TotalTime;
             endTime.Text = $"{end:mm}:{end:ss}";
 
             audio.Volume = 0.5f;
-            wave.Init(audio);
-            wave.Play();
 
-            trackInfo1.Image = card.Image;
-            trackInfo1.Title = card.Title;
-            trackInfo1.Singer = card.Singer;
+            Play = true;
+
         }
+
         private void audioTimer_Tick(object sender, EventArgs e)
         {
             if (audio != null)
@@ -65,5 +97,55 @@ namespace MusicPlayer.Components
                 trackBar.Value = (float)audio.CurrentTime.TotalSeconds;
             }
         }
+        #endregion
+
+        #region Events
+
+        EventHandler<MusicCard>? next;
+        public event EventHandler<MusicCard> Next
+        {
+            add
+            {
+                next += value;
+            }
+            remove
+            {
+                next -= value;
+            }
+        }
+        EventHandler<MusicCard>? prev;
+        public event EventHandler<MusicCard> Prev
+        {
+            add
+            {
+                prev += value;
+            }
+            remove
+            {
+                prev -= value;
+            }
+        }
+
+        #endregion
+
+        #region Buttons click
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            if (lastCard != null)
+            {
+                Play = !Play;
+            }
+        }
+
+        private void NextEvent(object? sender, EventArgs e)
+        {
+            next?.Invoke(sender, lastCard);
+        }
+
+        private void PrevEvent(object? sender, EventArgs e)
+        {
+            prev?.Invoke(sender, lastCard);
+        }
+        #endregion
     }
 }

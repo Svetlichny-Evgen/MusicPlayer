@@ -30,7 +30,7 @@
         {
             musicCardsArea = new FlowLayoutPanel();
             PlayListArea = new FlowLayoutPanel();
-            audioPlayerControl1 = new Components.AudioPlayerControl();
+            audioPlayerControl = new Components.AudioPlayerControl();
             SuspendLayout();
             // 
             // musicCardsArea
@@ -53,12 +53,12 @@
             // 
             // audioPlayerControl1
             // 
-            audioPlayerControl1.Dock = DockStyle.Bottom;
-            audioPlayerControl1.Location = new Point(0, 385);
-            audioPlayerControl1.Margin = new Padding(3, 2, 3, 2);
-            audioPlayerControl1.Name = "audioPlayerControl1";
-            audioPlayerControl1.Size = new Size(1002, 65);
-            audioPlayerControl1.TabIndex = 2;
+            audioPlayerControl.Dock = DockStyle.Bottom;
+            audioPlayerControl.Location = new Point(0, 385);
+            audioPlayerControl.Margin = new Padding(3, 2, 3, 2);
+            audioPlayerControl.Name = "audioPlayerControl1";
+            audioPlayerControl.Size = new Size(1002, 65);
+            audioPlayerControl.TabIndex = 2;
             // 
             // Form1
             // 
@@ -67,7 +67,7 @@
             ClientSize = new Size(1002, 450);
             Controls.Add(musicCardsArea);
             Controls.Add(PlayListArea);
-            Controls.Add(audioPlayerControl1);
+            Controls.Add(audioPlayerControl);
             Name = "Form1";
             Text = "AudioPlayer";
             Load += Form1_Load;
@@ -78,6 +78,6 @@
 
         private FlowLayoutPanel musicCardsArea;
         private FlowLayoutPanel PlayListArea;
-        private Components.AudioPlayerControl audioPlayerControl1;
+        private Components.AudioPlayerControl audioPlayerControl;
     }
 }

@@ -32,14 +32,18 @@
             TLPAudioKontrol = new TableLayoutPanel();
             TLPControlMain = new TableLayoutPanel();
             TLPControlButton = new TableLayoutPanel();
+            playButton = new CustomButton();
+            prevButton = new CustomButton();
+            nextButton = new CustomButton();
             TLPControlBar = new TableLayoutPanel();
             trackBar = new TrackBar();
             currentTime = new Label();
             endTime = new Label();
-            trackInfo1 = new TrackInfo();
+            trackInfo = new TrackInfo();
             audioTimer = new System.Windows.Forms.Timer(components);
             TLPAudioKontrol.SuspendLayout();
             TLPControlMain.SuspendLayout();
+            TLPControlButton.SuspendLayout();
             TLPControlBar.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,7 +55,7 @@
             TLPAudioKontrol.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 612F));
             TLPAudioKontrol.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TLPAudioKontrol.Controls.Add(TLPControlMain, 1, 0);
-            TLPAudioKontrol.Controls.Add(trackInfo1, 0, 0);
+            TLPAudioKontrol.Controls.Add(trackInfo, 0, 0);
             TLPAudioKontrol.Dock = DockStyle.Fill;
             TLPAudioKontrol.Location = new Point(0, 0);
             TLPAudioKontrol.Margin = new Padding(3, 2, 3, 2);
@@ -83,12 +87,15 @@
             TLPControlButton.BackColor = SystemColors.ControlLight;
             TLPControlButton.ColumnCount = 7;
             TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
             TLPControlButton.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TLPControlButton.Controls.Add(playButton, 3, 0);
+            TLPControlButton.Controls.Add(prevButton, 2, 0);
+            TLPControlButton.Controls.Add(nextButton, 4, 0);
             TLPControlButton.Dock = DockStyle.Fill;
             TLPControlButton.Location = new Point(7, 6);
             TLPControlButton.Margin = new Padding(3, 2, 3, 2);
@@ -97,6 +104,39 @@
             TLPControlButton.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TLPControlButton.Size = new Size(592, 31);
             TLPControlButton.TabIndex = 0;
+            // 
+            // playButton
+            // 
+            playButton.Dock = DockStyle.Fill;
+            playButton.Image = Properties.Resources.play;
+            playButton.Location = new Point(276, 3);
+            playButton.Name = "playButton";
+            playButton.Padding = new Padding(5);
+            playButton.Size = new Size(39, 25);
+            playButton.TabIndex = 0;
+            playButton.Click += playButton_Click;
+            // 
+            // prevButton
+            // 
+            prevButton.Dock = DockStyle.Fill;
+            prevButton.Image = Properties.Resources.prev;
+            prevButton.Location = new Point(231, 3);
+            prevButton.Name = "prevButton";
+            prevButton.Padding = new Padding(5);
+            prevButton.Size = new Size(39, 25);
+            prevButton.TabIndex = 1;
+            prevButton.Click += PrevEvent;
+            // 
+            // nextButton
+            // 
+            nextButton.Dock = DockStyle.Fill;
+            nextButton.Image = Properties.Resources.next;
+            nextButton.Location = new Point(321, 3);
+            nextButton.Name = "nextButton";
+            nextButton.Padding = new Padding(5);
+            nextButton.Size = new Size(39, 25);
+            nextButton.TabIndex = 2;
+            nextButton.Click += NextEvent;
             // 
             // TLPControlBar
             // 
@@ -150,18 +190,18 @@
             endTime.Text = "--:--";
             endTime.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // trackInfo1
+            // trackInfo
             // 
-            trackInfo1.BackColor = SystemColors.Control;
-            trackInfo1.Dock = DockStyle.Fill;
-            trackInfo1.Image = null;
-            trackInfo1.Location = new Point(3, 3);
-            trackInfo1.Name = "trackInfo1";
-            trackInfo1.Singer = "Discription";
-            trackInfo1.Size = new Size(124, 68);
-            trackInfo1.Source = null;
-            trackInfo1.TabIndex = 1;
-            trackInfo1.Title = "TrackTitle";
+            trackInfo.BackColor = SystemColors.Control;
+            trackInfo.Dock = DockStyle.Fill;
+            trackInfo.Image = null;
+            trackInfo.Location = new Point(3, 3);
+            trackInfo.Name = "trackInfo";
+            trackInfo.Singer = "Discription";
+            trackInfo.Size = new Size(124, 68);
+            trackInfo.Source = null;
+            trackInfo.TabIndex = 1;
+            trackInfo.Title = "TrackTitle";
             // 
             // audioTimer
             // 
@@ -179,6 +219,7 @@
             Size = new Size(872, 74);
             TLPAudioKontrol.ResumeLayout(false);
             TLPControlMain.ResumeLayout(false);
+            TLPControlButton.ResumeLayout(false);
             TLPControlBar.ResumeLayout(false);
             TLPControlBar.PerformLayout();
             ResumeLayout(false);
@@ -195,6 +236,9 @@
         private Label endTime;
         private System.Windows.Forms.Timer audioTimer;
         private PlayList musicInfo;
-        private TrackInfo trackInfo1;
+        private TrackInfo trackInfo;
+        private CustomButton playButton;
+        private CustomButton prevButton;
+        private CustomButton nextButton;
     }
 }
