@@ -36,6 +36,7 @@ namespace MusicPlayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             if (!Directory.Exists(folderPath))
             {
                 OpenFileOnFormLoad();
@@ -51,6 +52,7 @@ namespace MusicPlayer
 
         private void Playlist_OpenPlayList(object? sender, EventArgs e)
         {
+            
             PlayList? playlist = sender as PlayList;
             if (playlist != null)
             {

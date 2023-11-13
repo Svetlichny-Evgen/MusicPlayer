@@ -10,16 +10,25 @@ using System.Windows.Forms;
 
 namespace MusicPlayer.Components
 {
+
     public partial class MusicCard : UserControl
     {
+
         private EventHandler? playTrack;
         private MusicCard()
         {
             InitializeComponent();
             HoverRecursive(musicCardArea);
             ClickRecursive(musicCardArea);
-        }
 
+
+
+        }
+        #region
+
+
+
+        #endregion
         public MusicCard(string file) : this()
         {
             Source = file;
@@ -40,6 +49,10 @@ namespace MusicPlayer.Components
             {
                 Image = Properties.Resources.audio;
             }
+
+
+
+
         }
 
         #region Properties
@@ -117,14 +130,35 @@ namespace MusicPlayer.Components
 
         private void Panel_MouseClick(object? sender, MouseEventArgs e)
         {
+
             playTrack?.Invoke(this, e);
+
         }
+
+        
 
         public event EventHandler PlayTrack
         {
             add { playTrack += value; }
             remove { playTrack -= value; }
         }
+
+        #endregion
+        #region Eq
+        public bool Play
+        {
+            
+            get
+            {
+                return panelforEq.Visible;
+            }
+            set
+            {
+                panelforEq.Visible = value;
+            }
+        }
+         
+
         #endregion
     }
 }

@@ -32,8 +32,11 @@
             lbSinger = new Label();
             pbMusicImage = new PictureBox();
             lbMusicTitle = new Label();
+            panelforEq = new Panel();
+            EQ = new EQ();
             musicCardArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbMusicImage).BeginInit();
+            panelforEq.SuspendLayout();
             SuspendLayout();
             // 
             // musicCardArea
@@ -47,12 +50,12 @@
             musicCardArea.Location = new Point(0, 0);
             musicCardArea.Margin = new Padding(0);
             musicCardArea.Name = "musicCardArea";
-            musicCardArea.Padding = new Padding(20);
+            musicCardArea.Padding = new Padding(23, 27, 23, 27);
             musicCardArea.RowCount = 3;
             musicCardArea.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            musicCardArea.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            musicCardArea.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            musicCardArea.Size = new Size(181, 251);
+            musicCardArea.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
+            musicCardArea.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            musicCardArea.Size = new Size(207, 335);
             musicCardArea.TabIndex = 0;
             // 
             // lbSinger
@@ -60,20 +63,20 @@
             lbSinger.AutoSize = true;
             lbSinger.BackColor = Color.Transparent;
             lbSinger.ForeColor = SystemColors.ControlDark;
-            lbSinger.Location = new Point(25, 196);
-            lbSinger.Margin = new Padding(5);
+            lbSinger.Location = new Point(29, 280);
+            lbSinger.Margin = new Padding(6, 7, 6, 7);
             lbSinger.Name = "lbSinger";
-            lbSinger.Size = new Size(38, 15);
+            lbSinger.Size = new Size(50, 20);
             lbSinger.TabIndex = 2;
             lbSinger.Text = "label2";
             // 
             // pbMusicImage
             // 
             pbMusicImage.Dock = DockStyle.Fill;
-            pbMusicImage.Location = new Point(25, 25);
-            pbMusicImage.Margin = new Padding(5);
+            pbMusicImage.Location = new Point(29, 34);
+            pbMusicImage.Margin = new Padding(6, 7, 6, 7);
             pbMusicImage.Name = "pbMusicImage";
-            pbMusicImage.Size = new Size(131, 121);
+            pbMusicImage.Size = new Size(149, 179);
             pbMusicImage.SizeMode = PictureBoxSizeMode.Zoom;
             pbMusicImage.TabIndex = 0;
             pbMusicImage.TabStop = false;
@@ -84,26 +87,47 @@
             lbMusicTitle.BackColor = Color.Transparent;
             lbMusicTitle.Font = new Font("Bahnschrift SemiLight", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             lbMusicTitle.ForeColor = Color.FromArgb(150, 60, 96);
-            lbMusicTitle.Location = new Point(25, 156);
-            lbMusicTitle.Margin = new Padding(5);
+            lbMusicTitle.Location = new Point(29, 227);
+            lbMusicTitle.Margin = new Padding(6, 7, 6, 7);
             lbMusicTitle.Name = "lbMusicTitle";
-            lbMusicTitle.Size = new Size(58, 23);
+            lbMusicTitle.Size = new Size(71, 28);
             lbMusicTitle.TabIndex = 1;
             lbMusicTitle.Text = "label1";
             // 
+            // panelforEq
+            // 
+            panelforEq.Controls.Add(EQ);
+            panelforEq.Dock = DockStyle.Bottom;
+            panelforEq.Location = new Point(0, 298);
+            panelforEq.Name = "panelforEq";
+            panelforEq.Size = new Size(207, 37);
+            panelforEq.TabIndex = 1;
+            panelforEq.Visible = false;
+            // 
+            // EQ
+            // 
+            EQ.Dock = DockStyle.Fill;
+            EQ.Location = new Point(0, 0);
+            EQ.Name = "EQ";
+            EQ.Size = new Size(207, 37);
+            EQ.TabIndex = 0;
+            // 
             // MusicCard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(panelforEq);
             Controls.Add(musicCardArea);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MusicCard";
-            Size = new Size(181, 251);
+            Size = new Size(207, 335);
             Enter += MusicCard_Enter;
             Leave += MusicCard_Leave;
             musicCardArea.ResumeLayout(false);
             musicCardArea.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbMusicImage).EndInit();
+            panelforEq.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -113,5 +137,7 @@
         private Label lbSinger;
         private PictureBox pbMusicImage;
         private Label lbMusicTitle;
+        private Panel panelforEq;
+        private EQ EQ;
     }
 }

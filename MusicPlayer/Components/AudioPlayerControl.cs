@@ -51,6 +51,7 @@ namespace MusicPlayer.Components
             trackInfo.Singer = "";
             trackBar.ChangeValue += TrackBar_ChangeValue;
             trackBar.Value = 0.0f;
+            lastCard = null; 
         }
         #region MusicControl
         private void TrackBar_ChangeValue(object? sender, float e)
