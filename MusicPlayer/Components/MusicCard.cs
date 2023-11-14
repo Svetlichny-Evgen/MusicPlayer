@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,9 @@ namespace MusicPlayer.Components
             InitializeComponent();
             HoverRecursive(musicCardArea);
             ClickRecursive(musicCardArea);
+            //Controls.Add(panelforEq); /// если это разкоментировать то картинка на музик карде при воспроизведении будет уменьшатся
 
+            MakePictureBoxRound(pictureBoxplay);
 
 
         }
@@ -54,7 +57,21 @@ namespace MusicPlayer.Components
 
 
         }
-
+        #region
+        private void MakePictureBoxRound(PictureBox pictureBox)
+        {
+            pictureBox.Paint += (sender, e) =>
+            {
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    path.AddEllipse(0, 0, pictureBox.Width, pictureBox.Height);
+                    pictureBox.Region = new Region(path);
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    e.Graphics.DrawEllipse(new Pen(Color.Black, 2), 0, 0, pictureBox.Width, pictureBox.Height);
+                }
+            };
+        }
+        #endregion
         #region Properties
         public Image Image
         {
@@ -96,11 +113,15 @@ namespace MusicPlayer.Components
         private void MusicCard_Enter(object? sender, EventArgs e)
         {
             musicCardArea.BackColor = Color.FromArgb(217, 217, 217);
+            panelforEq.BackColor = Color.FromArgb(217, 217, 217);
+            pictureBoxplay.Visible = true;
         }
 
         private void MusicCard_Leave(object? sender, EventArgs e)
         {
             musicCardArea.BackColor = Color.White;
+            panelforEq.BackColor = Color.White;
+            pictureBoxplay.Visible = false;
         }
 
         private void HoverRecursive(Control panel)
@@ -135,7 +156,10 @@ namespace MusicPlayer.Components
 
         }
 
-        
+        private void pictureBoxplay_Click(object sender, EventArgs e)
+        {
+            // здесь хочу что бы при нажатии на кнопку красненькую тоже воспроизводился трек, но я пока не додумался 
+        }
 
         public event EventHandler PlayTrack
         {
@@ -147,7 +171,7 @@ namespace MusicPlayer.Components
         #region Eq
         public bool Play
         {
-            
+
             get
             {
                 return panelforEq.Visible;
@@ -157,7 +181,7 @@ namespace MusicPlayer.Components
                 panelforEq.Visible = value;
             }
         }
-         
+
 
         #endregion
     }

@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MusicCard));
             musicCardArea = new TableLayoutPanel();
             lbSinger = new Label();
             pbMusicImage = new PictureBox();
             lbMusicTitle = new Label();
             panelforEq = new Panel();
             EQ = new EQ();
+            pictureBoxplay = new PictureBox();
             musicCardArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbMusicImage).BeginInit();
             panelforEq.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxplay).BeginInit();
             SuspendLayout();
             // 
             // musicCardArea
@@ -112,11 +115,25 @@
             EQ.Size = new Size(207, 37);
             EQ.TabIndex = 0;
             // 
+            // pictureBoxplay
+            // 
+            pictureBoxplay.BackColor = Color.Transparent;
+            pictureBoxplay.Image = (Image)resources.GetObject("pictureBoxplay.Image");
+            pictureBoxplay.Location = new Point(66, 115);
+            pictureBoxplay.Name = "pictureBoxplay";
+            pictureBoxplay.Size = new Size(70, 70);
+            pictureBoxplay.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxplay.TabIndex = 2;
+            pictureBoxplay.TabStop = false;
+            pictureBoxplay.Visible = false;
+            pictureBoxplay.Click += pictureBoxplay_Click;
+            // 
             // MusicCard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(pictureBoxplay);
             Controls.Add(panelforEq);
             Controls.Add(musicCardArea);
             Margin = new Padding(3, 4, 3, 4);
@@ -128,6 +145,7 @@
             musicCardArea.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbMusicImage).EndInit();
             panelforEq.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBoxplay).EndInit();
             ResumeLayout(false);
         }
 
@@ -139,5 +157,6 @@
         private Label lbMusicTitle;
         private Panel panelforEq;
         private EQ EQ;
+        private PictureBox pictureBoxplay;
     }
 }
