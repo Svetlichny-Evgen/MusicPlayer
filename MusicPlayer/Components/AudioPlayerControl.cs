@@ -63,6 +63,12 @@ namespace MusicPlayer.Components
         }
         public void PlayTrack(MusicCard card)
         {
+            if (lastCard != null) //ЛАСТ КАРД ЭТО ГЛОБАЛ ПЕРЕМЕННАЯ
+            {
+                lastCard.Play = false;
+            }
+            
+            card.Play = true;
             lastCard = card;
             if (wave != null)
             {
