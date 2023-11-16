@@ -135,7 +135,18 @@ namespace MusicPlayer.Components
                 prev -= value;
             }
         }
-
+        EventHandler<MusicCard>? randomMusic;
+        public event EventHandler<MusicCard> RandomMusic
+        {
+            add
+            {
+                randomMusic += value;
+            }
+            remove
+            {
+                randomMusic -= value;
+            }
+        }
         #endregion
 
         #region Buttons click
@@ -178,21 +189,21 @@ namespace MusicPlayer.Components
             }
 
         }
+
         private void btnRandom_Click(object sender, EventArgs e)
         {
-            PlayRandomTrack();
+            if (playRandom)
+            {
+                btnRandom.ShowDot = false;
+                playRandom = !playRandom;
+            }
+            else
+            {
+                btnRandom.ShowDot = true;
+                playRandom = !playRandom;
+            }
+            randomMusic?.Invoke(sender, lastCard);
         }
         #endregion
-
-
-
-
-
-
-
-
-        private void PlayRandomTrack()
-        {
-        }
     }
 }

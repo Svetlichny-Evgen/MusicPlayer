@@ -16,6 +16,14 @@ namespace MusicPlayer
             InitializeComponent();
             audioPlayerControl.Next += AudioPlayerControl_Next;
             audioPlayerControl.Prev += AudioPlayerControl_Prev;
+            audioPlayerControl.RandomMusic += AudioPlayerControl_RandomMusic;
+        }
+
+        private void AudioPlayerControl_RandomMusic(object? sender, MusicCard e)
+        {
+            Random random = new Random();
+            MusicCard randomCard = (MusicCard)musicCardsArea.Controls[random.Next(musicCardsArea.Controls.Count)];
+            audioPlayerControl.PlayTrack(randomCard);
         }
 
         private void AudioPlayerControl_Prev(object? sender, MusicCard e)
@@ -79,8 +87,6 @@ namespace MusicPlayer
             {
                 audioPlayerControl.PlayTrack(card);
             }
-
-
         }
 
         private void OpenFileOnFormLoad()
