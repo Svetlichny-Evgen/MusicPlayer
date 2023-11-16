@@ -43,5 +43,41 @@ namespace MusicPlayer.Components
                 buttonImage.Image = value;
             }
         }
+        private bool showDot = false;
+        private Color dotColor = Color.Red;
+        public bool ShowDot
+        {
+            get { return showDot; }
+            set
+            {
+                showDot = value;
+                Invalidate();
+            }
+        }
+        public Color DotColor
+        {
+            get { return dotColor; }
+            set
+            {
+                dotColor = value;
+                Invalidate();
+            }
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            if (ShowDot)
+            {
+                int dotSize = 5; // Размер точки
+                int x = (Width - dotSize) / 2; // Центрируем точку по горизонтали
+                int y = Height - dotSize; // Помещаем точку внизу
+
+                using (SolidBrush brush = new SolidBrush(DotColor))
+                {
+                    e.Graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
+                }
+            }
+        }
     }
 }

@@ -35,6 +35,8 @@
             playButton = new CustomButton();
             prevButton = new CustomButton();
             nextButton = new CustomButton();
+            btnRepeat = new CustomButton();
+            btnRandom = new CustomButton();
             TLPControlBar = new TableLayoutPanel();
             trackBar = new TrackBar();
             currentTime = new Label();
@@ -96,6 +98,8 @@
             TLPControlButton.Controls.Add(playButton, 3, 0);
             TLPControlButton.Controls.Add(prevButton, 2, 0);
             TLPControlButton.Controls.Add(nextButton, 4, 0);
+            TLPControlButton.Controls.Add(btnRepeat, 5, 0);
+            TLPControlButton.Controls.Add(btnRandom, 1, 0);
             TLPControlButton.Dock = DockStyle.Fill;
             TLPControlButton.Location = new Point(7, 6);
             TLPControlButton.Margin = new Padding(3, 2, 3, 2);
@@ -108,10 +112,12 @@
             // playButton
             // 
             playButton.Dock = DockStyle.Fill;
+            playButton.DotColor = Color.Red;
             playButton.Image = Properties.Resources.play;
             playButton.Location = new Point(276, 3);
             playButton.Name = "playButton";
             playButton.Padding = new Padding(5);
+            playButton.ShowDot = false;
             playButton.Size = new Size(39, 25);
             playButton.TabIndex = 0;
             playButton.Click += playButton_Click;
@@ -119,10 +125,12 @@
             // prevButton
             // 
             prevButton.Dock = DockStyle.Fill;
+            prevButton.DotColor = Color.Red;
             prevButton.Image = Properties.Resources.prev;
             prevButton.Location = new Point(231, 3);
             prevButton.Name = "prevButton";
             prevButton.Padding = new Padding(5);
+            prevButton.ShowDot = false;
             prevButton.Size = new Size(39, 25);
             prevButton.TabIndex = 1;
             prevButton.Click += PrevEvent;
@@ -130,13 +138,37 @@
             // nextButton
             // 
             nextButton.Dock = DockStyle.Fill;
+            nextButton.DotColor = Color.Red;
             nextButton.Image = Properties.Resources.next;
             nextButton.Location = new Point(321, 3);
             nextButton.Name = "nextButton";
             nextButton.Padding = new Padding(5);
+            nextButton.ShowDot = false;
             nextButton.Size = new Size(39, 25);
             nextButton.TabIndex = 2;
             nextButton.Click += NextEvent;
+            // 
+            // btnRepeat
+            // 
+            btnRepeat.DotColor = Color.Red;
+            btnRepeat.Image = Properties.Resources.repeat;
+            btnRepeat.Location = new Point(366, 3);
+            btnRepeat.Name = "btnRepeat";
+            btnRepeat.Padding = new Padding(5);
+            btnRepeat.ShowDot = false;
+            btnRepeat.Size = new Size(39, 25);
+            btnRepeat.TabIndex = 3;
+            // 
+            // btnRandom
+            // 
+            btnRandom.DotColor = Color.Red;
+            btnRandom.Image = Properties.Resources.random;
+            btnRandom.Location = new Point(186, 3);
+            btnRandom.Name = "btnRandom";
+            btnRandom.Padding = new Padding(5);
+            btnRandom.ShowDot = false;
+            btnRandom.Size = new Size(39, 25);
+            btnRandom.TabIndex = 4;
             // 
             // TLPControlBar
             // 
@@ -240,5 +272,7 @@
         private CustomButton playButton;
         private CustomButton prevButton;
         private CustomButton nextButton;
+        private CustomButton btnRepeat;
+        private CustomButton btnRandom;
     }
 }

@@ -51,7 +51,7 @@ namespace MusicPlayer.Components
             trackInfo.Singer = "";
             trackBar.ChangeValue += TrackBar_ChangeValue;
             trackBar.Value = 0.0f;
-            lastCard = null; 
+            lastCard = null;
         }
         #region MusicControl
         private void TrackBar_ChangeValue(object? sender, float e)
@@ -67,7 +67,7 @@ namespace MusicPlayer.Components
             {
                 lastCard.Play = false;
             }
-            
+
             card.Play = true;
             lastCard = card;
             if (wave != null)
