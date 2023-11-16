@@ -16,14 +16,6 @@ namespace MusicPlayer
             InitializeComponent();
             audioPlayerControl.Next += AudioPlayerControl_Next;
             audioPlayerControl.Prev += AudioPlayerControl_Prev;
-            audioPlayerControl.RandomMusic += AudioPlayerControl_RandomMusic;
-        }
-
-        private void AudioPlayerControl_RandomMusic(object? sender, MusicCard e)
-        {
-            Random random = new Random();
-            MusicCard randomCard = (MusicCard)musicCardsArea.Controls[random.Next(musicCardsArea.Controls.Count)];
-            audioPlayerControl.PlayTrack(randomCard);
         }
 
         private void AudioPlayerControl_Prev(object? sender, MusicCard e)
@@ -36,10 +28,19 @@ namespace MusicPlayer
 
         private void AudioPlayerControl_Next(object? sender, MusicCard e)
         {
-            int index = musicCardsArea.Controls.IndexOf(e);
-            index = index == musicCardsArea.Controls.Count - 1 ? 0 : index + 1;
-            var next = (MusicCard)musicCardsArea.Controls[index];
-            audioPlayerControl.PlayTrack(next);
+            if (audioPlayerControl.btnRandom.ShowDot) // Проверяем, показывается ли точка на кнопке
+            {
+                Random random = new Random();
+                MusicCard randomCard = (MusicCard)musicCardsArea.Controls[random.Next(musicCardsArea.Controls.Count)];
+                audioPlayerControl.PlayTrack(randomCard);
+            }
+            else
+            {
+                int index = musicCardsArea.Controls.IndexOf(e);
+                index = index == musicCardsArea.Controls.Count - 1 ? 0 : index + 1;
+                var next = (MusicCard)musicCardsArea.Controls[index];
+                audioPlayerControl.PlayTrack(next);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

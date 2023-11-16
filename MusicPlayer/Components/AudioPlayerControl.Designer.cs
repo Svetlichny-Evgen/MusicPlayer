@@ -275,6 +275,6 @@
         private CustomButton prevButton;
         private CustomButton nextButton;
         private CustomButton btnRepeat;
-        private CustomButton btnRandom;
+        public CustomButton btnRandom;
     }
 }

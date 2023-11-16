@@ -192,17 +192,10 @@ namespace MusicPlayer.Components
 
         private void btnRandom_Click(object sender, EventArgs e)
         {
-            if (playRandom)
-            {
-                btnRandom.ShowDot = false;
-                playRandom = !playRandom;
-            }
-            else
-            {
-                btnRandom.ShowDot = true;
-                playRandom = !playRandom;
-            }
-            randomMusic?.Invoke(sender, lastCard);
+            playRandom = !playRandom; // Переключаем флаг
+
+            // Устанавливаем состояние точки
+            btnRandom.ShowDot = playRandom;
         }
         #endregion
     }
