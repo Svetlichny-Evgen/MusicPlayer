@@ -18,6 +18,9 @@ namespace MusicPlayer.Components
         WaveOut wave;
         AudioFileReader? audio;
         MusicCard lastCard;
+        bool isRepeat = false;
+        bool playRandom = false;
+        Random random = new Random();
 
         #region Play
         bool play;
@@ -146,13 +149,50 @@ namespace MusicPlayer.Components
 
         private void NextEvent(object? sender, EventArgs e)
         {
-            next?.Invoke(sender, lastCard);
+            if (isRepeat)
+            {
+                PlayTrack(lastCard);
+            }
+            else
+            {
+                next?.Invoke(sender, lastCard);
+            }
         }
 
         private void PrevEvent(object? sender, EventArgs e)
         {
             prev?.Invoke(sender, lastCard);
         }
+
+        private void btnRepeat_Click(object sender, EventArgs e)
+        {
+            if (isRepeat)
+            {
+                btnRepeat.ShowDot = false;
+                isRepeat = !isRepeat;
+            }
+            else
+            {
+                btnRepeat.ShowDot = true;
+                isRepeat = !isRepeat;
+            }
+
+        }
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            PlayRandomTrack();
+        }
         #endregion
+
+
+
+
+
+
+
+
+        private void PlayRandomTrack()
+        {
+        }
     }
 }

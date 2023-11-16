@@ -158,6 +158,7 @@
             btnRepeat.ShowDot = false;
             btnRepeat.Size = new Size(39, 25);
             btnRepeat.TabIndex = 3;
+            btnRepeat.Click += btnRepeat_Click;
             // 
             // btnRandom
             // 
@@ -169,6 +170,7 @@
             btnRandom.ShowDot = false;
             btnRandom.Size = new Size(39, 25);
             btnRandom.TabIndex = 4;
+            btnRandom.Click += btnRandom_Click;
             // 
             // TLPControlBar
             // 
