@@ -88,19 +88,19 @@
             // 
             lbMusicTitle.AutoSize = true;
             lbMusicTitle.BackColor = Color.Transparent;
-            lbMusicTitle.Font = new Font("Bahnschrift SemiLight", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbMusicTitle.Dock = DockStyle.Fill;
+            lbMusicTitle.Font = new Font("Bahnschrift", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             lbMusicTitle.ForeColor = Color.FromArgb(150, 60, 96);
             lbMusicTitle.Location = new Point(29, 227);
             lbMusicTitle.Margin = new Padding(6, 7, 6, 7);
             lbMusicTitle.Name = "lbMusicTitle";
-            lbMusicTitle.Size = new Size(71, 28);
+            lbMusicTitle.Size = new Size(149, 39);
             lbMusicTitle.TabIndex = 1;
             lbMusicTitle.Text = "label1";
             // 
             // panelforEq
             // 
             panelforEq.Controls.Add(EQ);
-            panelforEq.Dock = DockStyle.Bottom;
             panelforEq.Location = new Point(0, 298);
             panelforEq.Name = "panelforEq";
             panelforEq.Size = new Size(207, 37);
@@ -127,6 +127,7 @@
             pictureBoxplay.TabStop = false;
             pictureBoxplay.Visible = false;
             pictureBoxplay.Click += pictureBoxplay_Click;
+            pictureBoxplay.MouseClick += Panel_MouseClick;
             // 
             // MusicCard
             // 

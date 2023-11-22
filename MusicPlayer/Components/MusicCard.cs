@@ -57,7 +57,7 @@ namespace MusicPlayer.Components
 
 
         }
-        #region
+        #region скругление кнопочки
         private void MakePictureBoxRound(PictureBox pictureBox)
         {
             pictureBox.Paint += (sender, e) =>

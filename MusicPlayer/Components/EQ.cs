@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace MusicPlayer.Components
 {
-    using System;
+    //using System;
     using System.Windows.Forms;
     public partial class EQ : UserControl
     {
         private Timer timer = new Timer();
-        private int[] barHeights = new int[20];
+        private int[] barHeights = new int[25];
         private Random random = new Random();
         
         public EQ()
@@ -28,7 +28,7 @@ namespace MusicPlayer.Components
         }
         private void UpdateEqualizer(object sender, EventArgs e)
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 25; i++)
             {
                 barHeights[i] = random.Next(10, EQpanel.Height);
             }
@@ -43,7 +43,7 @@ namespace MusicPlayer.Components
             int barWidth = EQpanel.Width / 30;
             int spacing = 5;
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 25; i++)
             {
                 int x = i * (barWidth + spacing);
                 int y = EQpanel.Height - barHeights[i];
