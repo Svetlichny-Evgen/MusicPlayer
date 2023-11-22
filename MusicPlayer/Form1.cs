@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace MusicPlayer
 {
@@ -58,7 +59,13 @@ namespace MusicPlayer
                 playlist.OpenPlayList += Playlist_OpenPlayList;
                 PlayListArea.Controls.Add(playlist);
             }
+            if (dirs.Length > 0)
+            {
+                var firstplaylist = PlayListArea.Controls[0] as PlayList;
+                OpenPlayList(firstplaylist);
+            }
             
+
         }
 
         private void Playlist_OpenPlayList(object? sender, EventArgs e)

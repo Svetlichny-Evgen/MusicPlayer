@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicPlayer.Estensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,10 +22,8 @@ namespace MusicPlayer.Components
             InitializeComponent();
             HoverRecursive(musicCardArea);
             ClickRecursive(musicCardArea);
-            //Controls.Add(panelforEq); /// если это разкоментировать то картинка на музик карде при воспроизведении будет уменьшатся
-
             MakePictureBoxRound(pictureBoxplay);
-
+            this.SetRoundShape(20);
 
         }
         #region
@@ -139,7 +138,7 @@ namespace MusicPlayer.Components
         private void ClickRecursive(Control panel)
         {
             panel.MouseClick += Panel_MouseClick;
-
+            
 
             for (int i = 0; i < panel.Controls.Count; i++)
             {
