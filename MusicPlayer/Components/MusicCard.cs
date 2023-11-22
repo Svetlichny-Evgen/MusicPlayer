@@ -158,7 +158,7 @@ namespace MusicPlayer.Components
 
         private void pictureBoxplay_Click(object sender, EventArgs e)
         {
-            // здесь хочу что бы при нажатии на кнопку красненькую тоже воспроизводился трек, но я пока не додумался 
+            playTrack?.Invoke(this, e);
         }
 
         public event EventHandler PlayTrack

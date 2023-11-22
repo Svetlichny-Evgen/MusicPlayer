@@ -127,7 +127,6 @@
             pictureBoxplay.TabStop = false;
             pictureBoxplay.Visible = false;
             pictureBoxplay.Click += pictureBoxplay_Click;
-            pictureBoxplay.MouseClick += Panel_MouseClick;
             // 
             // MusicCard
             // 

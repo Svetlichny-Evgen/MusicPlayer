@@ -46,6 +46,7 @@ namespace MusicPlayer
         private void Form1_Load(object sender, EventArgs e)
         {
             
+
             if (!Directory.Exists(folderPath))
             {
                 OpenFileOnFormLoad();
@@ -57,6 +58,7 @@ namespace MusicPlayer
                 playlist.OpenPlayList += Playlist_OpenPlayList;
                 PlayListArea.Controls.Add(playlist);
             }
+            
         }
 
         private void Playlist_OpenPlayList(object? sender, EventArgs e)
@@ -86,9 +88,11 @@ namespace MusicPlayer
         {
             if (sender is MusicCard card)
             {
+                
                 audioPlayerControl.PlayTrack(card);
             }
         }
+       
 
         private void OpenFileOnFormLoad()
         {
