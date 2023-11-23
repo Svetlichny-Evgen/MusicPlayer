@@ -37,37 +37,38 @@
             // 
             musicCardsArea.AutoScroll = true;
             musicCardsArea.Dock = DockStyle.Fill;
-            musicCardsArea.Location = new Point(234, 0);
+            musicCardsArea.Location = new Point(267, 0);
+            musicCardsArea.Margin = new Padding(3, 4, 3, 4);
             musicCardsArea.Name = "musicCardsArea";
-            musicCardsArea.Size = new Size(768, 385);
+            musicCardsArea.Size = new Size(878, 513);
             musicCardsArea.TabIndex = 1;
             // 
             // PlayListArea
             // 
             PlayListArea.Dock = DockStyle.Left;
             PlayListArea.Location = new Point(0, 0);
-            PlayListArea.Margin = new Padding(3, 2, 3, 2);
             PlayListArea.Name = "PlayListArea";
-            PlayListArea.Size = new Size(234, 385);
+            PlayListArea.Size = new Size(267, 513);
             PlayListArea.TabIndex = 0;
             // 
-            // audioPlayerControl1
+            // audioPlayerControl
             // 
             audioPlayerControl.Dock = DockStyle.Bottom;
-            audioPlayerControl.Location = new Point(0, 385);
-            audioPlayerControl.Margin = new Padding(3, 2, 3, 2);
-            audioPlayerControl.Name = "audioPlayerControl1";
-            audioPlayerControl.Size = new Size(1002, 65);
+            audioPlayerControl.Location = new Point(0, 513);
+            audioPlayerControl.Name = "audioPlayerControl";
+            audioPlayerControl.Play = false;
+            audioPlayerControl.Size = new Size(1145, 87);
             audioPlayerControl.TabIndex = 2;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1002, 450);
+            ClientSize = new Size(1145, 600);
             Controls.Add(musicCardsArea);
             Controls.Add(PlayListArea);
             Controls.Add(audioPlayerControl);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "AudioPlayer";
             Load += Form1_Load;

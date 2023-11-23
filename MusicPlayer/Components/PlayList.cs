@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicPlayer.Estensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ namespace MusicPlayer.Components
         private PlayList()
         {
             InitializeComponent();
-            //HoverRecursive(PanelHaupt);
+
         }
         public PlayList(string path) : this()
         {
@@ -106,9 +107,9 @@ namespace MusicPlayer.Components
         #endregion
 
         #region Нажим
-        
 
-        
+
+
         private void ClickRecursive(Control panel)
         {
             panel.MouseClick += Panel_MouseClick;
@@ -126,7 +127,7 @@ namespace MusicPlayer.Components
         {
             openPlayList?.Invoke(this, e);
         }
-        
+
         public event EventHandler OpenPlayList
         {
             add { openPlayList += value; }

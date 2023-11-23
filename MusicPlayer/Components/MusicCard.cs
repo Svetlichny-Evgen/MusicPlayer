@@ -20,8 +20,8 @@ namespace MusicPlayer.Components
         private MusicCard()
         {
             InitializeComponent();
-            HoverRecursive(musicCardArea);
-            ClickRecursive(musicCardArea);
+            HoverRecursive(this);
+            ClickRecursive(this);
             MakePictureBoxRound(pictureBoxplay);
             this.SetRoundShape(20);
 
@@ -31,7 +31,7 @@ namespace MusicPlayer.Components
 
 
         #endregion
-        public MusicCard(string file) : this()
+        public MusicCard(PlayList playlist, string file) : this()
         {
             Source = file;
             var fileInfo = new FileInfo(file);
@@ -49,7 +49,7 @@ namespace MusicPlayer.Components
             }
             else
             {
-                Image = Properties.Resources.audio;
+                Image = playlist.Image;
             }
 
 
@@ -114,13 +114,18 @@ namespace MusicPlayer.Components
             musicCardArea.BackColor = Color.FromArgb(217, 217, 217);
             panelforEq.BackColor = Color.FromArgb(217, 217, 217);
             pictureBoxplay.Visible = true;
+
+
+
         }
 
         private void MusicCard_Leave(object? sender, EventArgs e)
         {
+            pictureBoxplay.Visible = false;
             musicCardArea.BackColor = Color.White;
             panelforEq.BackColor = Color.White;
-            pictureBoxplay.Visible = false;
+           
+
         }
 
         private void HoverRecursive(Control panel)
@@ -137,8 +142,10 @@ namespace MusicPlayer.Components
         #region Click
         private void ClickRecursive(Control panel)
         {
+
             panel.MouseClick += Panel_MouseClick;
-            
+           
+
 
             for (int i = 0; i < panel.Controls.Count; i++)
             {
@@ -150,15 +157,19 @@ namespace MusicPlayer.Components
 
         private void Panel_MouseClick(object? sender, MouseEventArgs e)
         {
-
+            
             playTrack?.Invoke(this, e);
 
         }
 
         private void pictureBoxplay_Click(object sender, EventArgs e)
         {
+
             playTrack?.Invoke(this, e);
+
         }
+
+        
 
         public event EventHandler PlayTrack
         {

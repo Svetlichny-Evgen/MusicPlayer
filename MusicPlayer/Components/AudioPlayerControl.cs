@@ -41,7 +41,11 @@ namespace MusicPlayer.Components
                 }
                 else
                 {
-                    wave.Pause();
+                    if(wave != null)
+                    {
+                        wave.Pause();
+                    }
+                    
                     playButton.Image = Properties.Resources.play;
                 }
             }

@@ -90,7 +90,7 @@
             lbMusicTitle.BackColor = Color.Transparent;
             lbMusicTitle.Dock = DockStyle.Fill;
             lbMusicTitle.Font = new Font("Bahnschrift", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lbMusicTitle.ForeColor = Color.FromArgb(150, 60, 96);
+            lbMusicTitle.ForeColor = Color.Maroon;
             lbMusicTitle.Location = new Point(29, 227);
             lbMusicTitle.Margin = new Padding(6, 7, 6, 7);
             lbMusicTitle.Name = "lbMusicTitle";
@@ -126,7 +126,6 @@
             pictureBoxplay.TabIndex = 2;
             pictureBoxplay.TabStop = false;
             pictureBoxplay.Visible = false;
-            pictureBoxplay.Click += pictureBoxplay_Click;
             // 
             // MusicCard
             // 
