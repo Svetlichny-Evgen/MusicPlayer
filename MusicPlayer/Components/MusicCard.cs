@@ -114,6 +114,9 @@ namespace MusicPlayer.Components
             musicCardArea.BackColor = Color.FromArgb(217, 217, 217);
             panelforEq.BackColor = Color.FromArgb(217, 217, 217);
             pictureBoxplay.Visible = true;
+            
+
+
 
 
 
@@ -123,8 +126,9 @@ namespace MusicPlayer.Components
         {
             pictureBoxplay.Visible = false;
             musicCardArea.BackColor = Color.White;
-            panelforEq.BackColor = Color.White;
            
+            panelforEq.BackColor = Color.White;
+
 
         }
 
@@ -144,7 +148,7 @@ namespace MusicPlayer.Components
         {
 
             panel.MouseClick += Panel_MouseClick;
-           
+
 
 
             for (int i = 0; i < panel.Controls.Count; i++)
@@ -157,7 +161,7 @@ namespace MusicPlayer.Components
 
         private void Panel_MouseClick(object? sender, MouseEventArgs e)
         {
-            
+
             playTrack?.Invoke(this, e);
 
         }
@@ -169,7 +173,6 @@ namespace MusicPlayer.Components
 
         }
 
-        
 
         public event EventHandler PlayTrack
         {

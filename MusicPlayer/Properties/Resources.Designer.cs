@@ -123,6 +123,16 @@ namespace MusicPlayer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap playyb {
+            get {
+                object obj = ResourceManager.GetObject("playyb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap prev {
             get {
                 object obj = ResourceManager.GetObject("prev", resourceCulture);
