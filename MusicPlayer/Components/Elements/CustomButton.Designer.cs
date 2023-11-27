@@ -36,9 +36,11 @@
             // 
             buttonImage.Cursor = Cursors.Hand;
             buttonImage.Dock = DockStyle.Fill;
-            buttonImage.Location = new Point(5, 5);
+            buttonImage.Location = new Point(0, 0);
+            buttonImage.Margin = new Padding(0);
             buttonImage.Name = "buttonImage";
-            buttonImage.Size = new Size(35, 35);
+            buttonImage.Padding = new Padding(2);
+            buttonImage.Size = new Size(45, 45);
             buttonImage.SizeMode = PictureBoxSizeMode.Zoom;
             buttonImage.TabIndex = 0;
             buttonImage.TabStop = false;
@@ -51,8 +53,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(buttonImage);
+            Margin = new Padding(0);
             Name = "CustomButton";
-            Padding = new Padding(5);
             Size = new Size(45, 45);
             ((System.ComponentModel.ISupportInitialize)buttonImage).EndInit();
             ResumeLayout(false);
