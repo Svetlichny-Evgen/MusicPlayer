@@ -59,12 +59,14 @@ namespace MusicPlayer.Components
         }
         public float Max { get; set; }
         #endregion
+
         #region Event
         public event EventHandler<float> ChangeValue
         {
             add { changeValue += value; }
             remove { changeValue -= value; }
         }
+
         private void PanelHaupt_MouseEnter(object sender, EventArgs e)
         {
            FirstLine.BackColor = Color.Black;
@@ -83,10 +85,32 @@ namespace MusicPlayer.Components
                 var child = panel.Controls[i];
                 HoverRecursive(child);
             }
-
         }
 
-        #endregion 
+        private void WheelRecursive(Control element)
+        {
+            element.MouseWheel += Element_MouseWheel;
+            for (int i = 0; i < element.Controls.Count; i++)
+            {
+                var child = element.Controls[i];
+                WheelRecursive(child);
+            }
+        }
+
+        private void Element_MouseWheel(object? sender, MouseEventArgs e)
+        {
+            if (e.Delta >= 0) 
+            {
+                Value += 2;
+            }
+            else
+            {
+                Value -= 2;
+            }
+
+            changeValue?.Invoke(sender, Value);
+        }
+        #endregion
         private void FirstLine_MouseClick(object sender, MouseEventArgs e)
         {
             var value = (e.X * Max) / TrackBarArea.Width;
@@ -100,6 +124,10 @@ namespace MusicPlayer.Components
             Value = value;
             changeValue?.Invoke(sender, value);
         }
-        
+
+        public void AddWheelEvent() 
+        {
+            WheelRecursive(TrackBarArea);
+        }
     }
 }

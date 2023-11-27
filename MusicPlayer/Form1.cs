@@ -46,13 +46,12 @@ namespace MusicPlayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
             if (!Directory.Exists(folderPath))
             {
                 OpenFileOnFormLoad();
             }
             string[] dirs = Directory.GetDirectories(folderPath);
+
             foreach (string dir in dirs)
             {
                 var playlist = new PlayList(dir);
@@ -64,13 +63,10 @@ namespace MusicPlayer
                 var firstplaylist = PlayListArea.Controls[0] as PlayList;
                 OpenPlayList(firstplaylist);
             }
-
-
         }
 
         private void Playlist_OpenPlayList(object? sender, EventArgs e)
         {
-
             PlayList? playlist = sender as PlayList;
             if (playlist != null)
             {
@@ -82,6 +78,7 @@ namespace MusicPlayer
         {
             musicCardsArea.Controls.Clear();
             string[] tracks = Directory.GetFiles(playlist.Source, "*.mp3");
+
             foreach (var track in tracks)
             {
                 var card = new MusicCard(playlist, track);
@@ -95,15 +92,14 @@ namespace MusicPlayer
         {
             if (sender is MusicCard card)
             {
-
                 audioPlayerControl.PlayTrack(card);
             }
         }
 
-
         private void OpenFileOnFormLoad()
         {
-            MessageBox.Show("Похоже, мы не смогли найти вашу папку с музыкой😞.\nВыберите дерикторию где находится ваша музыка.");
+            MessageBox.Show("Похоже, мы не смогли найти вашу папку с музыкой😞.\n" +
+                            "Выберите дерикторию где находится ваша музыка.");
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             folderBrowserDialog.Description = "Выберите папку";
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)

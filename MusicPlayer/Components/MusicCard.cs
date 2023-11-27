@@ -24,13 +24,8 @@ namespace MusicPlayer.Components
             ClickRecursive(this);
             MakePictureBoxRound(pictureBoxplay);
             this.SetRoundShape(20);
-
         }
-        #region
 
-
-
-        #endregion
         public MusicCard(PlayList playlist, string file) : this()
         {
             Source = file;
@@ -51,11 +46,8 @@ namespace MusicPlayer.Components
             {
                 Image = playlist.Image;
             }
-
-
-
-
         }
+
         #region скругление кнопочки
         private void MakePictureBoxRound(PictureBox pictureBox)
         {
@@ -71,6 +63,7 @@ namespace MusicPlayer.Components
             };
         }
         #endregion
+
         #region Properties
         public Image Image
         {
@@ -83,6 +76,7 @@ namespace MusicPlayer.Components
                 pbMusicImage.Image = value;
             }
         }
+
         public string Title
         {
             get
@@ -94,6 +88,7 @@ namespace MusicPlayer.Components
                 lbMusicTitle.Text = value;
             }
         }
+
         public string Singer
         {
             get
@@ -108,18 +103,13 @@ namespace MusicPlayer.Components
 
         public string Source { get; set; }
         #endregion
+
         #region Hover
         private void MusicCard_Enter(object? sender, EventArgs e)
         {
             musicCardArea.BackColor = Color.FromArgb(217, 217, 217);
             panelforEq.BackColor = Color.FromArgb(217, 217, 217);
             pictureBoxplay.Visible = true;
-            
-
-
-
-
-
         }
 
         private void MusicCard_Leave(object? sender, EventArgs e)
@@ -128,8 +118,6 @@ namespace MusicPlayer.Components
             musicCardArea.BackColor = Color.White;
            
             panelforEq.BackColor = Color.White;
-
-
         }
 
         private void HoverRecursive(Control panel)
@@ -143,44 +131,42 @@ namespace MusicPlayer.Components
             }
         }
         #endregion
+
         #region Click
         private void ClickRecursive(Control panel)
         {
-
             panel.MouseClick += Panel_MouseClick;
-
-
 
             for (int i = 0; i < panel.Controls.Count; i++)
             {
                 var child = panel.Controls[i];
                 ClickRecursive(child);
             }
-
         }
 
         private void Panel_MouseClick(object? sender, MouseEventArgs e)
         {
-
             playTrack?.Invoke(this, e);
-
         }
 
         private void pictureBoxplay_Click(object sender, EventArgs e)
         {
-
             playTrack?.Invoke(this, e);
-
         }
-
 
         public event EventHandler PlayTrack
         {
-            add { playTrack += value; }
-            remove { playTrack -= value; }
+            add 
+            { 
+                playTrack += value; 
+            }
+            remove 
+            { 
+                playTrack -= value; 
+            }
         }
-
         #endregion
+
         #region Eq
         public bool Play
         {

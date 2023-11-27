@@ -42,11 +42,14 @@
             currentTime = new Label();
             endTime = new Label();
             trackInfo = new TrackInfo();
+            volumeArea = new TableLayoutPanel();
+            volumeBar = new Elements.VolumeControl();
             audioTimer = new System.Windows.Forms.Timer(components);
             TLPAudioKontrol.SuspendLayout();
             TLPControlMain.SuspendLayout();
             TLPControlButton.SuspendLayout();
             TLPControlBar.SuspendLayout();
+            volumeArea.SuspendLayout();
             SuspendLayout();
             // 
             // TLPAudioKontrol
@@ -58,6 +61,7 @@
             TLPAudioKontrol.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TLPAudioKontrol.Controls.Add(TLPControlMain, 1, 0);
             TLPAudioKontrol.Controls.Add(trackInfo, 0, 0);
+            TLPAudioKontrol.Controls.Add(volumeArea, 2, 0);
             TLPAudioKontrol.Dock = DockStyle.Fill;
             TLPAudioKontrol.Location = new Point(0, 0);
             TLPAudioKontrol.Margin = new Padding(3, 2, 3, 2);
@@ -237,6 +241,30 @@
             trackInfo.TabIndex = 1;
             trackInfo.Title = "TrackTitle";
             // 
+            // volumeArea
+            // 
+            volumeArea.ColumnCount = 1;
+            volumeArea.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            volumeArea.Controls.Add(volumeBar, 0, 1);
+            volumeArea.Dock = DockStyle.Fill;
+            volumeArea.Location = new Point(745, 3);
+            volumeArea.Name = "volumeArea";
+            volumeArea.RowCount = 3;
+            volumeArea.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            volumeArea.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            volumeArea.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            volumeArea.Size = new Size(124, 68);
+            volumeArea.TabIndex = 2;
+            // 
+            // volumeBar
+            // 
+            volumeBar.Dock = DockStyle.Fill;
+            volumeBar.Location = new Point(3, 7);
+            volumeBar.Name = "volumeBar";
+            volumeBar.Padding = new Padding(8);
+            volumeBar.Size = new Size(118, 54);
+            volumeBar.TabIndex = 0;
+            // 
             // audioTimer
             // 
             audioTimer.Enabled = true;
@@ -256,6 +284,7 @@
             TLPControlButton.ResumeLayout(false);
             TLPControlBar.ResumeLayout(false);
             TLPControlBar.PerformLayout();
+            volumeArea.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -276,5 +305,7 @@
         private CustomButton nextButton;
         private CustomButton btnRepeat;
         public CustomButton btnRandom;
+        private TableLayoutPanel volumeArea;
+        private Elements.VolumeControl volumeBar;
     }
 }

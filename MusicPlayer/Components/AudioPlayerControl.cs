@@ -41,11 +41,10 @@ namespace MusicPlayer.Components
                 }
                 else
                 {
-                    if(wave != null)
+                    if (wave != null)
                     {
                         wave.Pause();
                     }
-                    
                     playButton.Image = Properties.Resources.play;
                 }
             }
@@ -57,10 +56,19 @@ namespace MusicPlayer.Components
             trackInfo.Title = "";
             trackInfo.Singer = "";
             trackBar.ChangeValue += TrackBar_ChangeValue;
+            volumeBar.ChangeValue += VolumeBar_ChangeValue;
             trackBar.Value = 0.0f;
             lastCard = null;
-
         }
+
+        private void VolumeBar_ChangeValue(object? sender, float e)
+        {
+            if (audio != null)
+            {
+                audio.Volume = e;
+            }
+        }
+
         #region MusicControl
         private void TrackBar_ChangeValue(object? sender, float e)
         {
@@ -97,10 +105,8 @@ namespace MusicPlayer.Components
             TimeSpan end = audio.TotalTime;
             endTime.Text = $"{end:mm}:{end:ss}";
 
-            audio.Volume = 0.5f;
-
+            audio.Volume = volumeBar.Volume;
             Play = true;
-
         }
 
         private void audioTimer_Tick(object sender, EventArgs e)
@@ -192,13 +198,11 @@ namespace MusicPlayer.Components
                 btnRepeat.ShowDot = true;
                 isRepeat = !isRepeat;
             }
-
         }
 
         private void btnRandom_Click(object sender, EventArgs e)
         {
             playRandom = !playRandom; // Переключаем флаг
-
             // Устанавливаем состояние точки
             btnRandom.ShowDot = playRandom;
         }

@@ -34,9 +34,8 @@ namespace MusicPlayer.Components
                 Image = Properties.Resources.audio1;
             }
         }
+
         #region  Properties
-
-
         public Image Image
         {
             get
@@ -47,8 +46,8 @@ namespace MusicPlayer.Components
             {
                 pictureList.Image = value;
             }
-
         }
+
         public string Title
         {
             get
@@ -59,8 +58,8 @@ namespace MusicPlayer.Components
             {
                 TextTrackTitle.Text = value;
             }
-
         }
+
         public string Singer
         {
             get
@@ -71,8 +70,8 @@ namespace MusicPlayer.Components
             {
                 TextSinger.Text = value;
             }
-
         }
+
         public string Source { get; set; }
         #endregion
     }
